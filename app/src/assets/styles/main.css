@@ -1,0 +1,85 @@
+body{
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+.app-header, .app-footer{
+    background-color: rgba(188, 143, 143, 0.3);
+    padding: 10px;
+    color: brown;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.app-header{
+    position: sticky;
+    top: 0;
+    height: 50px;
+}
+.app-footer{
+    bottom: 0;
+    height: 30px;
+    position: fixed;
+}
+.app-content {
+    padding: 20px;
+    overflow-y: auto;
+    min-height: calc(100vh - 50px -30px);
+}
+h1{
+    margin:0;
+}
+.add-stolen-bike{
+    position: absolute;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: coral;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 5px rosybrown;
+    right: 10px;
+    top: 45px;
+    cursor: pointer;
+}
+.add-stolen-bike:hover{
+    box-shadow: 0 0 10px rebeccapurple;
+}
+.all-stolen-bikes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card{
+    width: 33%;
+    height: 250px;
+    padding: 10px;
+    background-color: rgba(227, 221, 221, 0.3);
+    box-shadow: 0 0 5px rosybrown;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.bike-model{
+    font-size: 18px;
+    font-weight: 600;
+}
+.bike-image{
+    width: 200px;
+    height: 150px;
+}
+.description{
+    height: 50px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+.city{
+    margin-top: 10px;
+}
+
+@media screen and(max-width: 610px){
+    .all-stolen-bikes{
+        flex-direction: column;
+    }
+}
