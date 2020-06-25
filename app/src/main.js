@@ -6,7 +6,7 @@ import {firestorePlugin} from 'vuefire'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import './assets/styles/main.css'
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 Vue.use(firestorePlugin)
 const firebaseConfig = {
