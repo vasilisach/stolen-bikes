@@ -6,7 +6,6 @@ import {firestorePlugin} from 'vuefire'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import './assets/styles/main.css'
-/*eslint-disable*/
 Vue.config.productionTip = false
 
 Vue.use(firestorePlugin)

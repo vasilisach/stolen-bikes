@@ -1,11 +1,14 @@
 body{
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     margin: 0;
+    position: static;
+    overflow: hidden;
+    width: 100%;
 }
 .app-header, .app-footer{
-    background-color: rgba(188, 143, 143, 0.3);
+    background-color: rgba(0, 39, 86, 0.4);
     padding: 10px;
-    color: brown;
+    color: rgb(255,201,10);
     width: 100%;
     display: flex;
     align-items: center;
@@ -24,7 +27,8 @@ body{
 .app-content {
     padding: 20px;
     overflow-y: auto;
-    min-height: calc(100vh - 50px -30px);
+    height: calc(100vh - 50px - 30px);
+    overflow: hidden;
 }
 h1{
     margin:0;
@@ -40,6 +44,7 @@ h1{
     right: 10px;
     top: 45px;
     cursor: pointer;
+    outline: none;
 }
 .add-stolen-bike:hover{
     box-shadow: 0 0 10px rebeccapurple;
@@ -49,6 +54,14 @@ h1{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    height: calc(100vh - 135px);
+    overflow-y: auto;
+}
+@media screen and(max-width: 610px){
+    .all-stolen-bikes{
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
 }
 .card{
     width: 33%;
@@ -56,10 +69,11 @@ h1{
     padding: 10px;
     background-color: rgba(227, 221, 221, 0.3);
     box-shadow: 0 0 5px rosybrown;
-    margin: 10px;
+    margin: 20px 10px 0 10px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .bike-model{
     font-size: 18px;
@@ -77,9 +91,27 @@ h1{
 .city{
     margin-top: 10px;
 }
-
-@media screen and(max-width: 610px){
-    .all-stolen-bikes{
-        flex-direction: column;
-    }
+.status{
+    position: absolute;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    top: -15px;
+    right: 0;
+}
+.accepted{
+    background-color: yellow;
+    transition: 0.5s;
+}
+.accepted:hover::after{
+    content:'resolved';
+    background-color: green;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.submitted{
+    background-color: rgb(188, 143, 143, 0.7);
+}
+.resolved{
+    background-color: green;
 }

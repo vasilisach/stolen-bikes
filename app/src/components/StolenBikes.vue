@@ -3,18 +3,18 @@
     <button class="add-stolen-bike" title="Add a stolen bike" @click="openModal">
       <i class="material-icons">add</i>
     </button>
-    <theftReportModal v-if="modalOpen"></theftReportModal>
+    <theftReportModal v-model="modalOpen"></theftReportModal>
     <div class="card" v-for="(stolenBike, idx) in stolenBikes" :key="idx">
-    <span class="bike-model">{{ stolenBike.bikeModel }}</span>
-    <img class="bike-image" :src="stolenBike.image">
-    <span class="city">{{stolenBike.city}}</span>
-    <span class="description">{{stolenBike.description}}</span>
+      <div class="status" :class="stolenBike.status">{{stolenBike.status}}</div>
+      <span class="bike-model">{{ stolenBike.bikeModel }}</span>
+      <img class="bike-image" :src="stolenBike.image">
+      <span class="city">{{stolenBike.city}}</span>
+      <span class="description">{{stolenBike.description}}</span>
     </div>
   </div>
 </template>
 
 <script>
-/*eslint-disable*/
 import {db} from '../main.js'
 import theftReportModal from './theftReportModal'
 export default {
@@ -26,7 +26,8 @@ export default {
       bikeModel:'',
       image:'',
       city:'',
-      description:''
+      description:'',
+      policemanName:''
     }
   },
   components:{theftReportModal},
@@ -36,14 +37,14 @@ export default {
       db.collection('stolenBikes').orderBy('createdAt')
     }
   },
-  methods: { 
-    addStolenBike (bikeModel, image, city, description) {      // <-- and here 
-      const createdAt = new Date()
-      db.collection('stolenBikes').add({ bikeModel, image, city, description, createdAt })
-    },
+  methods: {
     openModal() {
       this.modalOpen = !this.modalOpen;
+      if(!this.modalOpen){
+        let el = this.$el.querySelector('.error-msg')
+        el.style = "display: none;"
+      }
     }
-  }
+  },
 }
 </script>
