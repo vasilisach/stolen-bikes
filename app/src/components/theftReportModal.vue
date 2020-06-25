@@ -33,17 +33,21 @@ export default {
       if(bikeModel && image && city && description){
         el.style = "display: none;"
         const createdAt = new Date()
+        const status = 'submitted'
         let newStolenBikeId = ''
-        db.collection('stolenBikes').add({ bikeModel, image, city, description, createdAt, status: 'submitted' }).then(function(query){
+        db.collection('stolenBikes').add({ bikeModel, image, city, description, createdAt, status }).then(function(query){
           newStolenBikeId = query.id
         })
-        db.collection('police').where('status', '==', 'free').get().then(function(query){
-          query.forEach(doc => {
-            db.collection('police').doc(doc.id).update({status: 'booked'})
-            db.collection('stolenBikes').doc(newStolenBikeId).update({policeman: doc.id, status: 'accepted'})
-            return
-          })
+        db.collection('police').where('status', '==', 'free').limit(1).get().then(function(query){
+          if(!query.empty){
+            db.collection('police').doc(query.docs[0].id).update({status: 'booked'})
+            db.collection('stolenBikes').doc(newStolenBikeId).update({policeman: query.docs[0].id, status: 'accepted'})
+          }
         })
+        this.bikeModel = ''
+        this.city = '',
+        this.description = '',
+        this.image = ''
         this.$emit("input", !this.value);
       }else{
         el.style = "display: block;"
@@ -64,6 +68,7 @@ export default {
     position: absolute;
     margin: auto;
     box-sizing: border-box;
+    z-index: 1;
   }
   .input{
     width: 100%;

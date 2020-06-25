@@ -45,6 +45,7 @@ h1{
     top: 45px;
     cursor: pointer;
     outline: none;
+    z-index: 1;
 }
 .add-stolen-bike:hover{
     box-shadow: 0 0 10px rebeccapurple;
@@ -64,7 +65,7 @@ h1{
     }
 }
 .card{
-    width: 33%;
+    width: 350px;
     height: 250px;
     padding: 10px;
     background-color: rgba(227, 221, 221, 0.3);
@@ -93,25 +94,29 @@ h1{
 }
 .status{
     position: absolute;
+    right: -20px;
+    transform: rotate(45deg);
     padding: 5px;
-    display: flex;
-    align-items: center;
-    top: -15px;
-    right: 0;
+    border-radius: 5px;
 }
 .accepted{
-    background-color: yellow;
-    transition: 0.5s;
-}
-.accepted:hover::after{
-    content:'resolved';
-    background-color: green;
-    transition: 0.5s;
-    cursor: pointer;
+    background-color: rgba(255, 255, 0, 0.6);
 }
 .submitted{
-    background-color: rgb(188, 143, 143, 0.7);
+    background-color: rgb(188, 143, 143, 0.6);
 }
 .resolved{
-    background-color: green;
+    background-color: rgba(0, 128, 0, 0.6);
+}
+.done{
+    position: absolute;
+    font-size: 30px;
+    color: rgb(187, 186, 186, 0.5);
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    display: block;
+}
+.done:hover{
+    color: rgba(2, 202, 2, 0.767);
 }
