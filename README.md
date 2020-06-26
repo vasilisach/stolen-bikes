@@ -1,4 +1,4 @@
-# app
+# Stolen bikes Register
 
 > app for finding stolen bikes
 
@@ -23,5 +23,6 @@ npm run unit
 # run all tests
 npm test
 ```
+Demo: https://stolen-bikes-app.herokuapp.com/#/
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
